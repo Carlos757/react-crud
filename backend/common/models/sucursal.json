@@ -1,0 +1,41 @@
+{
+  "name": "sucursal",
+  "plural": "sucursales",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "status": {
+      "type": "boolean",
+      "default": true
+    },
+    "address": {
+      "type": "string"
+    },
+    "plazaId": {
+      "type": "number"
+    },
+    "createdAt": {
+      "type": "date"
+    },
+    "updatedAt": {
+      "type": "date"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "plaza": {
+      "type": "belongsTo",
+      "model": "plaza",
+      "foreignKey": "plazaId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

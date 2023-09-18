@@ -1,0 +1,15 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "mysql": {
+    "name": "mysql",
+    "host": "localhost",
+    "port": 3306,
+    "database": "fincamex",
+    "user": "root",
+    "password": "NhhqM7REE8Noje",
+    "connector": "mysql"
+  }
+}
