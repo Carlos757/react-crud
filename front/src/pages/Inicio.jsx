@@ -2,9 +2,9 @@ import { Typography } from "@mui/material";
 
 const Inicio = () => {
     return (
-        <Typography variant="h2" align="center">
-            Bienvenido!
-        </Typography>
+      <Typography variant="h4" align="center">
+        Bienvenido!
+      </Typography>
     );
 };
 

@@ -1,4 +1,3 @@
-import React from "react";
 import PropTypes from "prop-types";
 import { Typography, Toolbar, AppBar, IconButton } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";

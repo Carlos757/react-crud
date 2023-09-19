@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import PropTypes from "prop-types";
+
 import {
-  AppBar,
   Toolbar,
-  Typography,
   Box,
-  Divider,
   List,
   ListItem,
   ListItemButton,
@@ -13,7 +12,6 @@ import {
   Container,
 } from "@mui/material";
 import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
-import { Link } from "react-router-dom";
 import TopBar from "../TopBar";
 
 // Styled components
@@ -26,7 +24,9 @@ const Drawer = ({ modules, routes }) => {
     <Container>
       <TopBar
         title="Simple CRUD"
-        handleSidebar={() => setSidebarVisible(!sidebarVisible)}
+        handleSidebar={() =>
+          modules.length && setSidebarVisible(!sidebarVisible)
+        }
       />
       <SideBar
         variant="temporary"
@@ -39,7 +39,7 @@ const Drawer = ({ modules, routes }) => {
         <List>
           {modules.map(
             (module, index) =>
-              module.status && (
+              module.status === "1" && (
                 <LinkRouter
                   key={`link-${index}`}
                   to={module.route}
@@ -64,6 +64,11 @@ const Drawer = ({ modules, routes }) => {
       </Box>
     </Container>
   );
+};
+
+Drawer.propTypes = {
+  modules: PropTypes.array,
+  routes: PropTypes.object,
 };
 
 export default Drawer;

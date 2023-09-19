@@ -11,7 +11,7 @@ export const SideBar = styled(Drawer)(({ width }) => ({
   },
 }));
 
-export const LinkRouter = styled(Link)((props) => ({
+export const LinkRouter = styled(Link)(() => ({
   textDecoration: "none",
   color: "black"
 }));

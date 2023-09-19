@@ -1,10 +1,6 @@
 import { useState } from "react";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
+import PropTypes from "prop-types";
+
 import {
   Paper,
   IconButton,
@@ -12,12 +8,19 @@ import {
   MenuItem,
   ListItemIcon,
   ListItemText,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
 } from "@mui/material";
+
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 
-const CustomTable = ({ columns = [], rows = [], loading = false }) => {
+const CustomTable = ({ columns = [], rows = [], handleDialog }) => {
   const menuInitialState = {
     show: false,
     reference: null,
@@ -34,12 +37,25 @@ const CustomTable = ({ columns = [], rows = [], loading = false }) => {
     });
   };
 
-  const actions = [
-    { key: "edit", description: "Editar", icon: <EditIcon /> },
-    { key: "delete", description: "Eliminar", icon: <DeleteIcon /> },
-  ];
+  const handleAction = (type) => {
+    handleDialog(type, menu.item);
+    setMenu({ ...menu, show: false });
+  };
 
-  const handleSelectAction = (acrtion) => {};
+  const actions = [
+    {
+      key: "edit",
+      description: "Editar",
+      icon: <EditIcon />,
+      action: () => handleAction("edit"),
+    },
+    {
+      key: "delete",
+      description: "Eliminar",
+      icon: <DeleteIcon />,
+      action: () => handleAction("delete"),
+    },
+  ];
 
   return (
     <TableContainer component={Paper}>
@@ -78,10 +94,7 @@ const CustomTable = ({ columns = [], rows = [], loading = false }) => {
         transformOrigin={{ vertical: "top", horizontal: "center" }}
       >
         {actions.map((action, i) => (
-          <MenuItem
-            key={`action-${i}`}
-            onClick={() => handleSelectAction(action)}
-          >
+          <MenuItem key={`action-${i}`} onClick={action.action}>
             <ListItemIcon>{action.icon}</ListItemIcon>
             <ListItemText>{action.description}</ListItemText>
           </MenuItem>
@@ -90,5 +103,12 @@ const CustomTable = ({ columns = [], rows = [], loading = false }) => {
     </TableContainer>
   );
 };
+
+CustomTable.propTypes = {
+  columns: PropTypes.array,
+  rows: PropTypes.array,
+  handleDialog: PropTypes.func,
+};
+
 
 export default CustomTable;

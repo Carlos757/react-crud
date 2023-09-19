@@ -1,11 +1,10 @@
-import * as React from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Container } from "@mui/material";
 
 // Components
 import Drawer from "./components/Drawer";
-import TopBar from "./components/TopBar";
 
 // API
 import { apiCall } from "./api/crud";
@@ -38,8 +37,6 @@ export default function App() {
     }
   };
 
-  const url = "http://localhost:3000/api/";
-
   return (
     <BrowserRouter>
       <Container>
@@ -48,9 +45,9 @@ export default function App() {
           routes={
             <Routes>
               <Route path="/" element={<Navigate to="/inicio" replace />} />
-              <Route path="/inicio" element={<Inicio url={url} />} />
-              <Route path="/plazas" element={<Plazas url={url} />} />
-              <Route path="/sucursales" element={<Plazas url={url} />} />
+              <Route path="/inicio" element={<Inicio />} />
+              <Route path="/plazas" element={<Plazas />} />
+              <Route path="/sucursales" element={<Plazas />} />
             </Routes>
           }
         />
