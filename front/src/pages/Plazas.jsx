@@ -1,8 +1,12 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import CustomTable from "../components/CustomTable";
 import { apiCall } from "../api/crud";
+import { useDispatch } from "react-redux";
+import { setSnackbar } from "../appSlice";
+import { Container, Typography } from "@mui/material";
 
 const Plazas = () => {
+  const dispatch = useDispatch();
   const [plazas, setPlazas] = useState([]);
 
   useEffect(() => {
@@ -19,27 +23,20 @@ const Plazas = () => {
       setPlazas(requestDaily);
     } catch (err) {
       console.log(err);
+      dispatch(setSnackbar({ open: true, message: err.message }));
     }
   };
 
   return (
-    <div>
+    <Container sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
+      <Typography variant="h5">{plazas.title}</Typography>
+      <Typography variant="body2">{plazas.subtitle ?? "-"}</Typography>
       <CustomTable
         loading={false}
-        columns={[
-          { key: "name", name: "Nombre", size: "xs" },
-          { key: "address", name: "Domicilio", size: "lg" },
-          { key: "status", name: "Estatus", size: "xs" },
-          /* {
-            key: "createdAt",
-            name: "Fecha de creación",
-            size: "sm",
-            type: "date",
-          }, */
-        ]}
+        columns={plazas.columns}
         rows={plazas.data}
       />
-    </div>
+    </Container>
   );
 };
 

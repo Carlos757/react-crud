@@ -1,5 +1,5 @@
 module.exports = (Plaza) => {
-  Plaza.getPlazas = async () => {
+  Plaza.getPlazas = async (req, res) => {
     const response = {
       title: 'Plazas',
       data: [],
@@ -27,10 +27,11 @@ module.exports = (Plaza) => {
         status: plaza.status ? 'Activa' : 'Inactiva'
       }));
 
+      res.status(200).send(response);
     } catch (err) {
-      response.error = err;
+      console.log('err', err);
+      response.error = { message: err.message };
+      res.status(500).send(response);
     }
-
-    return response;
   }
 };

@@ -13,8 +13,11 @@ import Snackbar from "./components/Snackbar";
 
 import Inicio from "./pages/Inicio";
 import Plazas from "./pages/Plazas";
+import { useDispatch } from "react-redux";
+import { setSnackbar } from "./appSlice";
 
 export default function App() {
+  const dispatch = useDispatch();
   const [modules, setModules] = useState([]);
 
   useEffect(() => {
@@ -25,12 +28,13 @@ export default function App() {
     try {
       const requestDaily = await apiCall({
         method: "GET",
-        endpoint: "/modulos",
+        endpoint: "modulos",
       });
 
       setModules(requestDaily);
     } catch (err) {
       console.log(err);
+      dispatch(setSnackbar({ open: true, message: err.message }));
     }
   };
 
