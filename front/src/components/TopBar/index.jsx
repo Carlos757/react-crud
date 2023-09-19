@@ -1,10 +1,15 @@
 import PropTypes from "prop-types";
-import { Typography, Toolbar, AppBar, IconButton } from "@mui/material";
+
+// MUI
+import { Typography, Toolbar, IconButton } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+
+// StyleComponents
+import { AppBar } from "./styledComponents";
 
 const TopBar = ({ title, handleSidebar }) => {
   return (
-    <AppBar position="fixed" sx={{ width: "100%", zIndex: 100000 }}>
+    <AppBar position="fixed">
       <Toolbar>
         <IconButton
           size="large"
@@ -16,9 +21,7 @@ const TopBar = ({ title, handleSidebar }) => {
         >
           <MenuIcon />
         </IconButton>
-        <Typography variant="h6" noWrap component="div">
-          {title}
-        </Typography>
+        <Typography variant="h6">{title}</Typography>
       </Toolbar>
     </AppBar>
   );

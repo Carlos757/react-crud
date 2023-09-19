@@ -1,9 +1,9 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 
+// MUI
 import {
   Toolbar,
-  Box,
   List,
   ListItem,
   ListItemButton,
@@ -12,10 +12,12 @@ import {
   Container,
 } from "@mui/material";
 import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
+
+// Components
 import TopBar from "../TopBar";
 
 // Styled components
-import { LinkRouter, SideBar } from "./styledComponents";
+import { Content, LinkRouter, SideBar } from "./styledComponents";
 
 const Drawer = ({ modules, routes }) => {
   const [sidebarVisible, setSidebarVisible] = useState(false);
@@ -58,10 +60,10 @@ const Drawer = ({ modules, routes }) => {
           )}
         </List>
       </SideBar>
-      <Box sx={{ p: 2 }}>
+      <Content>
         <Toolbar />
         {routes}
-      </Box>
+      </Content>
     </Container>
   );
 };

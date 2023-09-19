@@ -5,13 +5,14 @@ import { Container } from "@mui/material";
 
 // Components
 import Drawer from "./components/Drawer";
+import Snackbar from "./components/Snackbar";
+import Inicio from "./pages/Inicio";
+import Plazas from "./pages/Plazas";
 
 // API
 import { apiCall } from "./api/crud";
-import Snackbar from "./components/Snackbar";
 
-import Inicio from "./pages/Inicio";
-import Plazas from "./pages/Plazas";
+// Redux
 import { useDispatch } from "react-redux";
 import { setSnackbar } from "./appSlice";
 

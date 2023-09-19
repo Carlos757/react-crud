@@ -15,5 +15,8 @@ export const LinkRouter = styled(Link)(() => ({
   textDecoration: "none",
   color: "black"
 }));
+export const Content = styled('div')(() => ({
+  padding: '12px 0px',
+}));
 
 

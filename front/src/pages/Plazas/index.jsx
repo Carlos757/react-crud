@@ -1,15 +1,21 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from "react";
-import CustomTable from "../../components/CustomTable";
 import { apiCall } from "../../api/crud";
+
+// Redux
 import { useDispatch } from "react-redux";
 import { setSnackbar } from "../../appSlice";
+
+// MUI
 import { Button, Typography } from "@mui/material";
-import { Container, HeadContent } from "./styledComponents";
 
 // Components
 import AddModal from "./components/AddModal";
 import DeleteModal from "./components/DeleteModal";
+import CustomTable from "../../components/CustomTable";
+
+// Styled components
+import { Container, HeadContent } from "./styledComponents";
 
 const Plazas = () => {
   const dispatch = useDispatch();
@@ -26,12 +32,12 @@ const Plazas = () => {
 
   const getPlazas = async () => {
     try {
-      const requestDaily = await apiCall({
+      const requestPlazas = await apiCall({
         method: "GET",
         endpoint: "/plazas/obtener",
       });
 
-      setPlazas(requestDaily);
+      setPlazas(requestPlazas);
     } catch (err) {
       console.log(err);
       dispatch(setSnackbar({ open: true, message: err.message }));
