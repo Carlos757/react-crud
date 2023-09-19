@@ -31,6 +31,12 @@ app.start = function () {
       console.log('Browse your REST API at %s%s', baseUrl, explorerPath);
     }
 
+    const { mysql } = app.dataSources;
+
+    mysql.on('connected', () => {
+      console.log('\x1b[1m\x1b[92m%s\x1b[0m', 'Conexión exitosa con la base de datos MySql.');
+    })
+
   });
 };
 // Bootstrap the application, configure models, datasources and middleware.
