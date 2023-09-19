@@ -28,7 +28,7 @@ cd backend
 npm install
 nodemon
 ```
-- Crear una BD en servidor MySql con el script de la carpeta BD
+- Crear una BD en servidor MySql con el script incluido llamado "BD prueba.sql"
 - Modificar el archivo datasources.development.json en la carpeta server con tu conexión
 ```
 "mysql": {
